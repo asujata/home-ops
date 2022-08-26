@@ -10,13 +10,13 @@ Based on the awesome [Flux cluster template](https://github.com/onedr0p/flux-clu
 
 ## Overview
 
-- [Prerequisites](https://github.com/k8s-at-home/flux-cluster-template#-prerequisites)
-- [Repository structure](https://github.com/k8s-at-home/flux-cluster-template#-repository-structure)
-- [Lets go!](https://github.com/k8s-at-home/flux-cluster-template#-lets-go)
-- [Post installation](https://github.com/k8s-at-home/flux-cluster-template#-post-installation)
-- [Troubleshooting](https://github.com/k8s-at-home/flux-cluster-template#-troubleshooting)
-- [What's next](https://github.com/k8s-at-home/flux-cluster-template#-whats-next)
-- [Thanks](https://github.com/k8s-at-home/flux-cluster-template#-thanks)
+- [Prerequisites](#prerequisites)
+- [Repository structure](#repository-structure)
+- [Lets go!](#lets-go)
+- [Post installation](#post-installation)
+- [Troubleshooting](#troubleshooting)
+- [Guidelines and Conventions](#guidelines-and-conventions)
+- [Thanks](#thanks)
 
 ## 📝 Prerequisites
 
@@ -515,22 +515,12 @@ The benefits of a public repository include:
   10. Optionally set your repository to Private in your repository settings.
 </details>
 
-## 👉 Troubleshooting
+## Guidelines and Conventions
 
-Our [wiki](https://github.com/k8s-at-home/flux-cluster-template/wiki) (WIP, contributions welcome) is a good place to start troubleshooting issues. If that doesn't cover your issue, come join and say Hi in our [Discord](https://discord.gg/k8s-at-home) server by starting a new thread in the #kubernetes support channel.
-
-You may also open a issue on this GitHub repo or open a [discussion on GitHub](https://github.com/k8s-at-home/organization/discussions).
-
-## ❔ What's next
-
-The world is your cluster, see below for important things you could work on adding.
-
-Our Check out our [wiki](https://github.com/k8s-at-home/flux-cluster-template/wiki) (WIP, contributions welcome) for more integrations!
+- [Commit message guidelines](https://www.conventionalcommits.org/en/v1.0.0/)
 
 ## 🤝 Thanks
 
-Big shout out to all the authors and contributors to the projects that we are using in this repository.
-
-Community member @Whazor created [this website](https://whazor.github.io/k8s-at-home-search/) as a creative way to search Helm Releases across GitHub. You may use it as a means to get ideas on how to configure an applications' Helm values.
+Thanks to all the people who donate their time to the [Kubernetes @Home](https://github.com/k8s-at-home/) community. A lot of inspiration for my cluster comes from the people that have shared their clusters with the [k8s-at-home](https://github.com/topics/k8s-at-home) GitHub topic.
 
 Many people have shared their awesome repositories over at [awesome-home-kubernetes](https://github.com/k8s-at-home/awesome-home-kubernetes).
