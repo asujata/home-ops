@@ -1,12 +1,15 @@
-# Template for deploying k3s backed by Flux
+<div align="center">
 
-Highly opinionated template for deploying a single [k3s](https://k3s.io) cluster with [Ansible](https://www.ansible.com) and [Terraform](https://www.terraform.io) backed by [Flux](https://toolkit.fluxcd.io/) and [SOPS](https://toolkit.fluxcd.io/guides/mozilla-sops/).
+### My home operations repository
 
-The purpose here is to showcase how you can deploy an entire Kubernetes cluster and show it off to the world using the [GitOps](https://www.weave.works/blog/what-is-gitops-really) tool [Flux](https://toolkit.fluxcd.io/). When completed, your Git repository will be driving the state of your Kubernetes cluster. In addition with the help of the [Ansible](https://github.com/ansible-collections/community.sops), [Terraform](https://github.com/carlpett/terraform-provider-sops) and [Flux](https://toolkit.fluxcd.io/guides/mozilla-sops/) SOPS integrations you'll be able to commit [Age](https://github.com/FiloSottile/age) encrypted secrets to your public repo.
+_... managed with Flux, Renovate and GitHub Actions_ 🤖
+
+</div>
+
+Based on the awesome [Flux cluster template](https://github.com/onedr0p/flux-cluster-template) from [onedr0p](https://github.com/onedr0p).
 
 ## Overview
 
-- [Introduction](https://github.com/k8s-at-home/flux-cluster-template#-introduction)
 - [Prerequisites](https://github.com/k8s-at-home/flux-cluster-template#-prerequisites)
 - [Repository structure](https://github.com/k8s-at-home/flux-cluster-template#-repository-structure)
 - [Lets go!](https://github.com/k8s-at-home/flux-cluster-template#-lets-go)
@@ -15,35 +18,19 @@ The purpose here is to showcase how you can deploy an entire Kubernetes cluster 
 - [What's next](https://github.com/k8s-at-home/flux-cluster-template#-whats-next)
 - [Thanks](https://github.com/k8s-at-home/flux-cluster-template#-thanks)
 
-## 👋 Introduction
+## 📝 Prerequisites
 
-The following components will be installed in your [k3s](https://k3s.io/) cluster by default. Most are only included to get a minimum viable cluster up and running.
+### 📚 Reading material
 
-- [flux](https://toolkit.fluxcd.io/) - GitOps operator for managing Kubernetes clusters from a Git repository
-- [kube-vip](https://kube-vip.io/) - Load balancer for the Kubernetes control plane nodes
-- [metallb](https://metallb.universe.tf/) - Load balancer for Kubernetes services
-- [cert-manager](https://cert-manager.io/) - Operator to request SSL certificates and store them as Kubernetes resources
-- [calico](https://www.tigera.io/project-calico/) - Container networking interface for inter pod and service networking
-- [external-dns](https://github.com/kubernetes-sigs/external-dns) - Operator to publish DNS records to Cloudflare (and other providers) based on Kubernetes ingresses
-- [k8s_gateway](https://github.com/ori-edge/k8s_gateway) - DNS resolver that provides local DNS to your Kubernetes ingresses
-- [ingress-nginx](https://kubernetes.github.io/ingress-nginx/) - Kubernetes ingress controller used for a HTTP reverse proxy of Kubernetes ingresses
-- [local-path-provisioner](https://github.com/rancher/local-path-provisioner) - provision persistent local storage with Kubernetes
+- [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
 
-_Additional applications include [hajimari](https://github.com/toboshii/hajimari), [error-pages](https://github.com/tarampampam/error-pages), [echo-server](https://github.com/Ealenn/Echo-Server), [system-upgrade-controller](https://github.com/rancher/system-upgrade-controller), [reloader](https://github.com/stakater/Reloader), and [kured](https://github.com/weaveworks/kured)_
+### Provisioning
 
 For provisioning the following tools will be used:
 
 - [Fedora 36 Server](https://getfedora.org/en/server/download/) - Universal operating system that supports running all kinds of home related workloads in Kubernetes and has a faster release cycle
 - [Ansible](https://www.ansible.com) - Provision Fedora Server and install k3s
 - [Terraform](https://www.terraform.io) - Provision an already existing Cloudflare domain and certain DNS records to be used with your k3s cluster
-
-## 📝 Prerequisites
-
-**Note:** _This template has not been tested on cloud providers like AWS EC2, Hetzner, Scaleway etc... Those cloud offerings probably have a better way of provsioning a Kubernetes cluster and it's advisable to use those instead of the Ansible playbooks included here. This repository can still be tweaked for the GitOps/Flux portion if there's a cluster working in one those environments._
-
-### 📚 Reading material
-
-- [Organizing Cluster Access Using kubeconfig Files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
 
 ### 💻 Systems
 
@@ -250,6 +237,8 @@ In order to use Terraform and `cert-manager` with the Cloudflare DNS challenge y
     # k8s-0          Ready    control-plane,master      4d20h   v1.21.5+k3s1
     # k8s-1          Ready    worker                    4d20h   v1.21.5+k3s1
     ```
+
+TODO: Worker node is missing the worker role. Add it yourself as a temporary workaround: `kubectl label node ${node} node-role.kubernetes.io/worker=worker`. I think the problem is within the k3s Ansible galaxy role.
 
 ### ☁️ Configuring Cloudflare DNS with Terraform
 
