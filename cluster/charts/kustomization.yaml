@@ -14,3 +14,4 @@ resources:
   - weaveworks-kured.yaml
   - kubito.yaml
   - prometheus-community-charts.yaml
+  - kubernetes-dashboard.yaml
