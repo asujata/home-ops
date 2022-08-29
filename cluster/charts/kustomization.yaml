@@ -13,3 +13,4 @@ resources:
   - stakater.yaml
   - weaveworks-kured.yaml
   - kubito.yaml
+  - prometheus-community-charts.yaml
