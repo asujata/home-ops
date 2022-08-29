@@ -7,4 +7,4 @@ resources:
   - ingress-nginx
   - metallb
   - k8s-gateway
-  - cloudflared
+  # - cloudflared
