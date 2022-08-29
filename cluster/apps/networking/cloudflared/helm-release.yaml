@@ -1,0 +1,37 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cloudflared
+  namespace: networking
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 0.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s-charts
+        namespace: flux-system
+  interval: 15m
+  maxHistory: 2
+  timeout: 20m
+  install:
+    remediation:
+      retries: 300
+  upgrade:
+    remediation:
+      retries: 300
+  values:
+    image:
+      repository: ghcr.io/cloudflare/cloudflared
+      tag: 2022.8.2
+    replicaCount: 1
+    tunnelID: ${SECRET_CLOUDFLARE_TUNNEL_ID}
+    existingSecret: cloudflare-tunnel-credentials
+    ingress:
+      - hostname: "*.${SECRET_DOMAIN}"
+        service: https://ingress-nginx-controller.networking
+        originRequest:
+          noTLSVerify: true
+      - service: http_status:404

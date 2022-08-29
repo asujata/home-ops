@@ -385,6 +385,62 @@ To access services from the outside world port forwarded `80` and `443` in your 
 
 Now if nothing is working, that is expected. This is DNS after all!
 
+#### Local-testing with a custom resolver
+
+By creating a custom resolver for `${BOOTSTRAP_CLOUDFLARE_DOMAIN}` we are able to access all Kubernetes resources locally without relying on a third-party / external DNS provider such as Cloudflare.
+
+On Mac OS:
+
+To see all DNS queries on interface `en0`, open a Terminal and run:
+
+```sh
+sudo tcpdump -n -i en0 port 53
+```
+
+
+Open another terminal and run:
+
+```sh
+sudo dscacheutil -flushcache
+sudo killall -HUP mDNSResponder
+```
+
+This flushed the DNS cache, so we are sure the system sends out new DNS requests.
+
+Next, we create a new DNS resolver for our domain:
+
+```sh
+sudo scutil
+d.init
+d.add ServerAddresses * 192.168.1.130
+d.add SupplementalMatchDomains * sujata.io
+set State:/Network/Service/sujata-io/DNS
+```
+
+Quit the interactive `scutil` console either with `quit` or by hitting CTRL-C.
+
+Next, check that the resolver has been added:
+
+```sh
+scutil --dns
+```
+
+```
+resolver #2
+  domain   : sujata.io
+  nameserver[0] : 192.168.1.130
+  flags    : Supplemental, Request A records, Request AAAA records
+  reach    : 0x00020002 (Reachable,Directly Reachable Address)
+  order    : 102600
+```
+
+After we're done testing, we can remove it with:
+
+```sh
+sudo scutil
+remove State:/Network/Service/whatever-you-want-as-long-as-unique/DNS
+```
+
 ### 🔐 SSL
 
 By default in this template Kubernetes ingresses are set to use the [Let's Encrypt Staging Environment](https://letsencrypt.org/docs/staging-environment/). This will hopefully reduce issues from ACME on requesting certificates until you are ready to use this in "Production".
@@ -518,6 +574,8 @@ The benefits of a public repository include:
 ## Guidelines and Conventions
 
 - [Commit message guidelines](https://www.conventionalcommits.org/en/v1.0.0/)
+
+
 
 ## 🤝 Thanks
 
