@@ -58,6 +58,7 @@ spec:
             # npm install --save homebridge-orbit-irrigation@latest
             # npm install --save homebridge-tplink-smarthome@latest
             # npm install --save -g homebridge-camera-ui@latest
+            npm install --save -g homebridge-hue
     ingress:
       main:
         enabled: true
