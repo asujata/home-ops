@@ -52,13 +52,13 @@ spec:
         data:
           startup.sh: |-
             #!/bin/sh
+            npm install --save homebridge-hue@latest
             # npm install --save homebridge-dummy@latest
             # npm install --save homebridge-myq@latest
             # npm install --save homebridge-nest@latest
             # npm install --save homebridge-orbit-irrigation@latest
             # npm install --save homebridge-tplink-smarthome@latest
             # npm install --save -g homebridge-camera-ui@latest
-            npm install --save -g homebridge-hue
     ingress:
       main:
         enabled: true
