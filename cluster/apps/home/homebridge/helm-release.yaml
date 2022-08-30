@@ -27,7 +27,6 @@ spec:
     env:
       TZ: "${TIMEZONE}"
       ENABLE_AVAHI: "1"
-      DEBUG: '*'
     service:
       main:
         ports:
