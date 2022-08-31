@@ -19,7 +19,7 @@ spec:
   values:
     persistence:
       defaultClassReplicaCount: 1
-    defaultSettings:
+    #defaultSettings:
       #backupTarget: s3://longhorn@minio/backups
       #backupTargetCredentialSecret: longhorn-backup
       #defaultReplicaCount: 2
