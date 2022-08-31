@@ -16,3 +16,4 @@ resources:
   - prometheus-community-charts.yaml
   - kubernetes-dashboard.yaml
   - rook-ceph-charts.yaml
+  - longhorn-charts.yaml
