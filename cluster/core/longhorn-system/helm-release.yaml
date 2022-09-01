@@ -25,16 +25,16 @@ spec:
       defaultReplicaCount: 1
       defaultLonghornStaticStorageClass: longhorn
       defaultDataPath: "/data/"
-      systemManagedComponentsNodeSelector: "node-role.kubernetes.io/worker:worker"
+      systemManagedComponentsNodeSelector: "node-role.kubernetes.io/storage:storage"
     longhornManager:
       nodeSelector:
-        node-role.kubernetes.io/worker: "worker"
+        node-role.kubernetes.io/storage: "storage"
     longhornDriver:
       nodeSelector:
-        node-role.kubernetes.io/worker: "worker"
+        node-role.kubernetes.io/storage: "storage"
     longhornUI:
       nodeSelector:
-        node-role.kubernetes.io/worker: "worker"
+        node-role.kubernetes.io/storage: "storage"
     csi:
       attacherReplicaCount: 1
       provisionerReplicaCount: 1
@@ -42,7 +42,10 @@ spec:
       snapshotterReplicaCount: 1
     ingress:
       enabled: true
+      ingressClassName: "nginx"
       host: "longhorn.${SECRET_DOMAIN}"
+      tls: true
+      tlsSecret: "longhorn-tls"
       path: /
       annotations:
         kubernetes.io/ingress.class: "nginx"
