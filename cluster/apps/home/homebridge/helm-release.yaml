@@ -24,8 +24,6 @@ spec:
     image:
       repository: ghcr.io/oznu/homebridge
       tag: 2022-08-09-ubuntu
-    nodeSelector:
-      kubernetes.io/hostname: k3s-1
     env:
       TZ: "${TIMEZONE}"
       ENABLE_AVAHI: "1"
@@ -88,6 +86,15 @@ spec:
           initialDelaySeconds: 30
     podAnnotations:
       configmap.reloader.stakater.com/reload: *config
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - "k3s-1"
     resources:
       requests:
         cpu: 10m
