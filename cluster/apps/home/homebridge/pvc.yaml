@@ -10,4 +10,4 @@ spec:
   resources:
     requests:
       storage: 250Mi
-  storageClassName: local-path
+  storageClassName: my-longhorn-sc
