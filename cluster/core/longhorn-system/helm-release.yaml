@@ -25,6 +25,7 @@ spec:
       #backupTargetCredentialSecret: longhorn-backup
       defaultReplicaCount: 1
       defaultLonghornStaticStorageClass: longhorn
+      createDefaultDiskLabeledNodes: true
       defaultDataPath: "/data/"
       systemManagedComponentsNodeSelector: "node-role.kubernetes.io/worker:worker"
     longhornManager:
