@@ -19,22 +19,20 @@ spec:
   values:
     persistence:
       defaultClassReplicaCount: 1
+      defaultClass: false
     defaultSettings:
       #backupTarget: s3://longhorn@minio/backups
       #backupTargetCredentialSecret: longhorn-backup
       defaultReplicaCount: 1
       defaultLonghornStaticStorageClass: longhorn
       defaultDataPath: "/data/"
-      systemManagedComponentsNodeSelector: "node-role.kubernetes.io/storage:storage"
+      systemManagedComponentsNodeSelector: "node-role.kubernetes.io/worker:worker"
     longhornManager:
       nodeSelector:
-        node-role.kubernetes.io/storage: "storage"
+        node-role.kubernetes.io/worker: "worker"
     longhornDriver:
       nodeSelector:
-        node-role.kubernetes.io/storage: "storage"
-    longhornUI:
-      nodeSelector:
-        node-role.kubernetes.io/storage: "storage"
+        node-role.kubernetes.io/worker: "worker"
     csi:
       attacherReplicaCount: 1
       provisionerReplicaCount: 1
