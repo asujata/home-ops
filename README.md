@@ -238,7 +238,17 @@ In order to use Terraform and `cert-manager` with the Cloudflare DNS challenge y
     # k8s-1          Ready    worker                    4d20h   v1.21.5+k3s1
     ```
 
-TODO: Worker node is missing the worker role. Add it yourself as a temporary workaround: `kubectl label node ${node} node-role.kubernetes.io/worker=worker`. I think the problem is within the k3s Ansible galaxy role.
+TODO: Worker node is missing the worker role. Add it yourself as a temporary workaround:
+
+```sh
+kubectl label node ${node} node-role.kubernetes.io/worker=worker
+```
+
+If using longhorn:
+
+```sh
+kubectl label node k3s-1 node.longhorn.io/create-default-disk=true
+```
 
 ### ☁️ Configuring Cloudflare DNS with Terraform
 
