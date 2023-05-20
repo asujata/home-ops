@@ -22,5 +22,7 @@ spec:
     remediation:
       retries: 5
   values:
+    psp:
+      create: false
     crds:
-      enabled: true
+      enabled: false
