@@ -27,7 +27,7 @@ spec:
   values:
     image:
       repository: ghcr.io/milgradesec/cloudflared
-      tag: 2023.4.2
+      tag: 2023.5.0
     replicaCount: 1
     tunnelID: ${SECRET_CLOUDFLARE_TUNNEL_ID}
     existingSecret: cloudflare-tunnel-credentials
