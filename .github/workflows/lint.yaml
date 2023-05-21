@@ -42,7 +42,6 @@ jobs:
                     "MARKDOWN_MARKDOWNLINT",
                     "REPOSITORY_GIT_DIFF",
                     "REPOSITORY_SECRETLINT",
-                    "TERRAFORM_TERRAFORM_FMT",
                     "YAML_PRETTIER",
                     "YAML_YAMLLINT"
                   ]
