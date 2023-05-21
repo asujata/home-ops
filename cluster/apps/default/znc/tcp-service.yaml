@@ -5,4 +5,4 @@ metadata:
   name: tcp-services
   namespace: networking
 data:
-  6667: "default/znc:6667"
+  "6667": "default/znc:6667"
