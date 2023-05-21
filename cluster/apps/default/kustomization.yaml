@@ -7,4 +7,4 @@ resources:
   - hajimari
   - kubernetes-dashboard
   - bitlbee
-  # - znc
+  - znc
