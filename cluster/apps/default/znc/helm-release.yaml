@@ -63,7 +63,7 @@ spec:
                 pathType: Prefix
                 service:
                   name: main
-                  port: 6667
+                  port: 8080
     resources:
       requests:
         cpu: 50m
