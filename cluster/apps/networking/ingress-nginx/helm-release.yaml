@@ -31,7 +31,6 @@ spec:
       extraEnvs:
         - name: TZ
           value: "${TIMEZONE}"
-      # extraArgs: "--tcp-services-configmap=networking/tcp-services"
       service:
         annotations:
           metallb.universe.tf/loadBalancerIPs: |-
