@@ -37,6 +37,14 @@ spec:
           metallb.universe.tf/loadBalancerIPs: |-
             ${METALLB_INGRESS_ADDR}
         externalTrafficPolicy: Local
+        ports:
+          http: 80
+          https: 443
+          znc: 6667
+        targetPorts:
+          http: http
+          https: https
+          znc: znc
       publishService:
         enabled: true
       ingressClassResource:
@@ -76,6 +84,8 @@ spec:
           value: lost-in-space
         - name: SHOW_DETAILS
           value: "false"
+    tcp:
+      "6667": "default/znc:6667"
   valuesFrom:
     # Cloudflare Networks
     # https://www.cloudflare.com/ips/
