@@ -41,6 +41,7 @@ spec:
       limits:
         memory: 96Mi
     persistence:
-      data:
+      config:
         enabled: true
         existingClaim: bitlbee-config
+        mountPath: /var/lib/bitlbee
