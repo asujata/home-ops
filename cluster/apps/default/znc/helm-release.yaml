@@ -29,7 +29,8 @@ spec:
       repository: znc
       tag: 1.8.2
     initContainers:
-      - name: init-config
+      config:
+        name: init-config
         image: znc:1.8.2
         command: ['/bin/sh', '-c', "until [ -f /znc-data/configs/znc.conf ]; do echo waiting for znc.conf; sleep 2; done"]
         volumeMounts:
