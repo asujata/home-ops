@@ -40,7 +40,7 @@ spec:
       main:
         ports:
           http:
-            port: 6667
+            port: 8080
             protocol: TCP
     resources:
       requests:
