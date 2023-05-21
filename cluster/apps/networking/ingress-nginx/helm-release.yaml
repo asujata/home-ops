@@ -31,6 +31,9 @@ spec:
       extraEnvs:
         - name: TZ
           value: "${TIMEZONE}"
+      args:
+        - /nginx-ingress-controller
+        - --tcp-services-configmap=ingress-nginx/tcp-services
       service:
         annotations:
           metallb.universe.tf/loadBalancerIPs: |-
