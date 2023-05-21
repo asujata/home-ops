@@ -41,9 +41,6 @@ spec:
       limits:
         memory: 96Mi
     persistence:
-      config:
+      data:
         enabled: true
-        type: pvc
-        accessMode: ReadWriteOnce
-        size: 1Gi
-        mountPath: /var/lib/bitlbee
+        existingClaim: bitlbee-config
