@@ -35,7 +35,7 @@ spec:
         command: ['/bin/sh', '-c', "until [ -f /znc-data/configs/znc.conf ]; do echo waiting for znc.conf; sleep 2; done"]
         volumeMounts:
           - mountPath: /znc-data
-            name: znc-config
+            name: config
     service:
       main:
         ports:
