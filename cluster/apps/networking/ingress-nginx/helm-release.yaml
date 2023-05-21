@@ -31,6 +31,9 @@ spec:
       extraEnvs:
         - name: TZ
           value: "${TIMEZONE}"
+      extraArgs:
+        - name: tcp-services-configmap
+          value: networking/tcp-services
       service:
         annotations:
           metallb.universe.tf/loadBalancerIPs: |-
@@ -75,9 +78,6 @@ spec:
           value: lost-in-space
         - name: SHOW_DETAILS
           value: "false"
-    args:
-      - /nginx-ingress-controller
-      - --tcp-services-configmap=ingress-nginx/tcp-services
   valuesFrom:
     # Cloudflare Networks
     # https://www.cloudflare.com/ips/
