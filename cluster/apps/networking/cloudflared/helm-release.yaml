@@ -31,8 +31,9 @@ spec:
     replicaCount: 1
     tunnelID: ${SECRET_CLOUDFLARE_TUNNEL_ID}
     existingSecret: cloudflare-tunnel-credentials
+    warpRouting: true
     ingress:
-      - hostname: "*.${SECRET_DOMAIN}"
+      - hostname: "znc.${SECRET_DOMAIN}"
         service: tcp://ingress-nginx-controller.networking
         originRequest:
           proxyType: socks
