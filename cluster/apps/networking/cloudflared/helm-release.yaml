@@ -33,6 +33,10 @@ spec:
     existingSecret: cloudflare-tunnel-credentials
     ingress:
       - hostname: "*.${SECRET_DOMAIN}"
+        service: tcp://ingress-nginx-controller.networking
+        originRequest:
+          proxyType: socks
+      - hostname: "*.${SECRET_DOMAIN}"
         service: https://ingress-nginx-controller.networking
         originRequest:
           noTLSVerify: true
