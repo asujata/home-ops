@@ -34,9 +34,7 @@ spec:
     warpRouting: true
     ingress:
       - hostname: "znc.${SECRET_DOMAIN}"
-        service: tcp://ingress-nginx-controller.networking
-        originRequest:
-          proxyType: socks
+        service: tcp://znc.default.svc.cluster.local:6667
       - hostname: "*.${SECRET_DOMAIN}"
         service: https://ingress-nginx-controller.networking
         originRequest:
